@@ -20,14 +20,11 @@ class UsersController < ApplicationController
   # POST /users
   #
   def create
-    binding.pry
     @user = User.new user_params
     if @user.save
-      binding.pry
       login(@user)
       redirect_to user_path(@user)
     else
-      binding.pry
       @errors = @user.errors.messages
       render :new
     end
