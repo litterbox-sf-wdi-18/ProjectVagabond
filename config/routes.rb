@@ -14,5 +14,4 @@ Rails.application.routes.draw do
   delete '/users/:id', to: 'users#destroy'
   get '/users/:id/edit', to: 'users#edit', as: 'edit_user'
 
-
 end

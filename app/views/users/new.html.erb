@@ -1,2 +1,93 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<div class='container'>
+<br><br>
+
+  <div class='row'>
+    <div class='col-md-6'>
+      <div class='well'>
+
+        <div class='row'>
+          <div class='col-md-6 col-md-offset-1'>
+            <h3>New User</h3>
+          </div>
+        </div>
+        <br>
+
+        <%= form_for(@user) do |f| %>
+          <div class='row'>
+            <div class='col-md-4 text-right'>
+              <%= f.label "First name: " %>
+            </div>
+            <div class='col-md-7'>
+              <%= f.text_field :first_name, autofocus: "true" %>
+            </div>
+          </div>
+          <br>
+          <div class='row'>
+            <div class='col-md-4 text-right'>
+              <%= f.label "Last name: " %>
+            </div>
+            <div class='col-md-7'>
+              <%= f.text_field :last_name %>
+            </div>
+          </div>
+          <br>
+          <div class='row'>
+            <div class='col-md-4 text-right'>
+              <%= f.label "Home city: " %>
+            </div>
+            <div class='col-md-7'>
+              <%= f.text_field :home_city %>
+            </div>
+          </div>
+          <br>
+          <div class='row'>
+            <div class='col-md-4 text-right'>
+              <%= f.label "Email: " %>
+            </div>
+            <div class='col-md-7'>
+              <%= f.text_field :email %>
+            </div>
+          </div>
+          <br>
+          <div class='row'>
+            <div class='col-md-4 text-right'>
+              <%= f.label "Confirm email: " %>
+            </div>
+            <div class='col-md-7'>
+              <%= f.text_field :email_confirmation %>
+            </div>
+          </div>
+          <br>
+          <div class='row'>
+            <div class='col-md-4 text-right'>
+              <%= f.label "Password: " %>
+            </div>
+            <div class='col-md-7'>
+              <%= f.password_field :password %>
+            </div>
+          </div>
+          <br>
+          <div class='row'>
+            <div class='col-md-4 text-right'>
+              <%= f.label "Confirm password: " %>
+            </div>
+            <div class='col-md-7'>
+              <%= f.password_field :password_confirmation %>
+            </div>
+          </div>
+          <br><br>
+          <div class='row'>
+            <div class='col-md-11 text-right'>
+              <%= f.submit "Sign up", class: "btn btn-lg btn-primary" %>
+              <br><br>
+              <p>Already registered?&nbsp&nbsp<span><%= link_to 'Login here', login_path %></span></p>
+            </div>
+          </div>
+          <br>
+        <% end %>
+
+      </div>    <!-- well -->
+    </div>
+  </div>
+
+</div>
