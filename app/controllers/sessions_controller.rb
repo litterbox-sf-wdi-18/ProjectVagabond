@@ -18,26 +18,29 @@ class SessionsController < ApplicationController
         if @user
           # user authorized, ok
           login @user
-          redirect_to cities_path
+          redirect_to cities_path, flash:{ login_ok: "Welcome back, #{@user.first_name}" }
         else
           # bad password
+          flash.now[:alert] = "Invalid password"
           # display the login page again
           render :new
         end
       else
         # user not found
+        flash[:alert] = "User not found"
         # have them sign up
         redirect_to signup_path
       end
     else
       # incomplete login fields
+      flash.now[:alert] = "Please enter your email and password"
       render :new
     end
   end
 
-  def delete
+  def destroy
     logout
-    redirect_to root_path
+    redirect_to root_path, flash:{ logout_ok: "Goodbye" }
   end
 
 end

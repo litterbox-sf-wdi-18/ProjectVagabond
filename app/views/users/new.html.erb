@@ -1,6 +1,15 @@
 <div class='container'>
 <br><br>
 
+  <% if @errors %>
+    <p>Fix these problems with your registration:</p>
+    <ul>
+      <% @errors.each do |error, mesg| %>
+        <li><%= error %>: <%= mesg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
   <div class='row'>
     <div class='col-md-6'>
       <div class='well'>
