@@ -15,10 +15,24 @@ RSpec.describe User, :type => :model do
     @user = User.create(@params)
   end
 
+
+  subject { @user }
+
+  it { should respond_to(:first_name) }
+  it { should respond_to(:last_name) }
+  it { should respond_to(:email) }
+  it { should respond_to(:home_city) }
+  it { should be_valid }
+
+
   context "has_secure_password" do
+
+    it { should respond_to(:password_digest) }
+
     it "does something fancy with the password" do
       expect(@user.password_digest).not_to eq @params[:password]
     end
+
   end
 
   context "User#confirm" do
