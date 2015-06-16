@@ -1,7 +1,14 @@
 class SessionsController < ApplicationController
+
+  #
+  # GET /login
+  #
   def new
   end
 
+  #
+  # POST /sessions
+  #
   def create
     if params[:email].present? && params[:password].present?
       # email and password entered, ok
@@ -11,7 +18,7 @@ class SessionsController < ApplicationController
         if @user
           # user authorized, ok
           login @user
-          redirect_to user_path(@user)
+          redirect_to cities_path
         else
           # bad password
           # display the login page again
@@ -29,5 +36,8 @@ class SessionsController < ApplicationController
   end
 
   def delete
+    logout
+    redirect_to root_path
   end
+
 end
