@@ -17,6 +17,14 @@ class UsersController < ApplicationController
   end
 
   #
+  # GET /user/:id/edit
+  #
+  def edit
+    @user = User.find params[:id]
+    render :edit
+  end
+
+  #
   # POST /users
   #
   def create
@@ -30,7 +38,15 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
+  def update
+    @user = User.find params[:id]
+    if @user.update_attributes params.require(:user).permit(:first_name, :last_name, :home_city)
+      redirect_to user_path(@user), flash:{ update_ok: "Updated successfully" }
+    else
+      flash.now[:alert] = "There was a problem with your update"
+      @errors = @user.errors.messages
+      render :edit
+    end
   end
 
   private
