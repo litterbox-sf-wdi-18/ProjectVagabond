@@ -12,6 +12,9 @@ RSpec.describe "the user profile page" do
               }
     # create a new user for use in all tests
     @user = User.create(@params)
+
+    @title = "Well what do ya know!?"
+    @user.logs << Log.new( {:title => @title } )
   end
 
   it "displays basic profile information" do
@@ -23,6 +26,14 @@ RSpec.describe "the user profile page" do
     expect(rendered).to match /Todd/
     expect(rendered).to match /London/
     expect(rendered).to match Date.today.to_s
+  end
+
+  it "displays log posts authored by the user" do
+    assign(:user, @user)
+
+    render :template => "users/show.html.erb"
+
+    expect(rendered).to match @title
   end
 
   # TEAR DOWN
