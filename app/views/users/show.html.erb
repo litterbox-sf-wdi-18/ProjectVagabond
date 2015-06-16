@@ -1,2 +1,6 @@
 <h1>Users#show</h1>
 <p>The user is: <%= @user.first_name %> <%= @user.last_name %></p>
+
+<%= image_tag @user.avatar.url %>
+<%= image_tag @user.avatar.url(:medium) %>
+<%= image_tag @user.avatar.url(:thumb) %>
