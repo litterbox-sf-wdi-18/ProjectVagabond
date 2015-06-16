@@ -22,6 +22,7 @@ RSpec.describe User, :type => :model do
   it { should respond_to(:last_name) }
   it { should respond_to(:email) }
   it { should respond_to(:home_city) }
+  it { should respond_to(:logs) } # has_many
   it { should be_valid }
 
 
