@@ -45,6 +45,28 @@ RSpec.describe User, :type => :model do
     end
   end
 
+  context "validations" do
+
+    it "fails loudly when email is blank or missing" do
+      bad_user = User.new({
+                  :first_name => "Sweeny",
+                  :last_name => "Todd",
+                  :password => "12345",
+                  :home_city => "London"
+                })
+
+      bad_user.save
+      expect( bad_user.errors[:email] ).to include "can't be blank"
+
+      bad_user.email = ""
+      bad_user.save
+      expect( bad_user.errors[:email] ).to include "can't be blank"
+
+      bad_user.destroy
+    end
+
+  end
+
 
   # TEAR DOWN
   after(:all) do
