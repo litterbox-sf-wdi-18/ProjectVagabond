@@ -18,5 +18,12 @@ Rails.application.routes.draw do
   post '/cities', to: 'cities#create'
   get '/cities/:id', to: 'cities#show', as: 'city'
 
+  get '/users/:user_id/logs', to: 'logs#index', as: 'user_logs'
+  post '/users/:user_id/logs', to: 'logs#create'
+  get '/users/:user_id/logs/:id', to: 'logs#show', as: 'user_log'
+  put '/users/:user_id/logs/:id', to: 'logs#update'
+  delete '/users/:user_id/logs/:id', to: 'logs#destroy'
+  get '/users/:user_id/logs/new', to: 'logs#new', as: 'new_user_log'
+  get '/users/:user_id/logs/:id/edit', to: 'logs#edit', as: 'edit_user_log'
 
 end

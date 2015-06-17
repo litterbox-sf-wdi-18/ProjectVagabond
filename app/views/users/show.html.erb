@@ -10,3 +10,9 @@
 <%= image_tag @user.avatar.url(:medium) %>
 <%= image_tag @user.avatar.url(:thumb) %>
 
+<h2>My travel logs:</h2>
+<ul>
+<% @user.logs.each do |log| %>
+  <li><%= link_to "#{log.title}", user_log_path(@user, log) %></li>
+<% end %>
+</ul>
