@@ -18,6 +18,9 @@ class LogsController < ApplicationController
     end
   end
 
+  #
+  # GET /users/:user_id/logs/:id
+  #
   def show
     @log = Log.find(params[:id])
   end
