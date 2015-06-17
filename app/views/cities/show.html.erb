@@ -1,10 +1,10 @@
-<h1>Cities#show</h1>
-
-<p><%= @city.name %></p>
-
+<h1><%= @city.name %></h1>
+<br>
 <ul>
+
   <% @city.logs.each do |log| %>
-    <li><%= link_to "#{log.title} by #{log.user.first_name} #{log.user.last_name}",
-            user_log_path(log.user, log) %></li>
+    <li><%= link_to "#{log.title}", user_log_path(log.user, log) %>
+        <%= "by #{log.user.first_name} #{log.user.last_name} - " %>
+        <%= "posted #{log.created_at.strftime("%m/%d/%Y")}" %></li>
   <% end %>
 </ul>
