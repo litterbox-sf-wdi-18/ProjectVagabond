@@ -23,23 +23,23 @@ end
   end
 
   def edit
-    authorize @log #???
   end
 
   def update
-    authorize @log #???
-
-    if @log.update(user)
+    if @log.update(log_params)
+      redirect_to @log
+    else
+      render :edit
+    end
   end
 
 end
+
+private
 
 def log_params
   params.require(:log).permit(:title, :content, :locaiton, :image)
 
 def find_log
   @log = Log.find(params[:id])
-end
-
-
 end
