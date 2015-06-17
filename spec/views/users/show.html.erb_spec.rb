@@ -8,7 +8,7 @@ RSpec.describe "the user profile page" do
                   :last_name => "Todd",
                   :password => "12345",
                   :email => "st@barbershop.com",
-                  :home_city => "London"
+                  :current_city => "London"
               }
     # create a new user for use in all tests
     user = User.create(@params)
@@ -27,7 +27,7 @@ RSpec.describe "the user profile page" do
     expect(rendered).to match /Todd/
   end
 
-  it "displays the user's home city" do
+  it "displays the user's current city" do
     expect(rendered).to match /London/
   end
 
