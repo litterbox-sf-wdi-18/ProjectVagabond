@@ -10,7 +10,6 @@ class CitiesController < ApplicationController
   def show
     @city = City.find params[:id]
     @logs = @city.logs.order created_at: :desc
-    binding.pry
   end
 
   def edit
