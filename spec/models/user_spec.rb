@@ -9,7 +9,7 @@ RSpec.describe User, :type => :model do
                   :last_name => "Todd",
                   :password => "12345",
                   :email => "st@barbershop.com",
-                  :home_city => "London"
+                  :current_city => "London"
               }
     # create a new user for use in all tests
     @user = User.create(@params)
@@ -21,7 +21,7 @@ RSpec.describe User, :type => :model do
   it { should respond_to(:first_name) }
   it { should respond_to(:last_name) }
   it { should respond_to(:email) }
-  it { should respond_to(:home_city) }
+  it { should respond_to(:current_city) }
   it { should respond_to(:logs) } # has_many
   it { should be_valid }
 
@@ -53,7 +53,7 @@ RSpec.describe User, :type => :model do
                   :first_name => "Sweeny",
                   :last_name => "Todd",
                   :password => "12345",
-                  :home_city => "London"
+                  :current_city => "London"
                 })
 
       bad_user.save
