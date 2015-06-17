@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find params[:id]
     if @user.update_attributes params.require(:user).permit(:first_name, :last_name, :home_city)
-      redirect_to user_path(@user), flash:{ update_ok: "Updated successfully" }
+      redirect_to user_path(@user), flash:{ update_ok: "Changes saved" }
     else
       flash.now[:alert] = "There was a problem with your update"
       @errors = @user.errors.messages

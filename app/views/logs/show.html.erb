@@ -1,9 +1,12 @@
-<h1>Logs#show</h1>
-<p>Find me in app/views/logs/show.html.erb</p>
-  
-<%= image_tag @user.avatar.url %>
+<h1><%= @log.title %> <small>by <%= @log.user.first_name %> <%= @log.user.last_name %></small></h1>
+<h3>A Vagabond Travel Log for: <%= @log.city.name %></h3>
+<br>
+<p><%= @log.content %></p>
+
+
+<%#= image_tag @user.avatar.url %>
 
 <!--
-<%= #image_tag @user.avatar.url(:medium) %>
-<%= #image_tag @user.avatar.url(:thumb) %>
+<%#= image_tag @user.avatar.url(:medium) %>
+<%#= image_tag @user.avatar.url(:thumb) %>
 -->
