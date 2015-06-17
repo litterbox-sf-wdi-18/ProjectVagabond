@@ -9,10 +9,8 @@ class CitiesController < ApplicationController
 
   def show
     @city = City.find params[:id]
-    @logs = @city.logs.sort_by do |log|
-      log.created_at
-    end
-    @logs.reverse!
+    @logs = @city.logs.order created_at: :desc
+    binding.pry
   end
 
   def edit
