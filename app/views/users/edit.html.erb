@@ -18,7 +18,7 @@
       </div>
       <br>
 
-      <%= form_for @user, method: "put" do |f| %>
+      <%= form_for @user, method: "put", html: { multipart: "true" } do |f| %>
         <div class='row'>
           <div class='col-md-4 text-right'>
             <%= f.label "First name: " %>
@@ -45,6 +45,14 @@
             <%= f.text_field :home_city %>
           </div>
         </div>
+        <div class='row'>
+          <div class='col-md-4 text-right'>
+            <%= f.label "Photo: " %>
+          </div>
+          <div class='col-md-7'>
+            <%= f.file_field :avatar %>
+          </div>
+        </div>
         <br><br>
         <div class='row'>
           <div class='col-md-11 text-right'>
@@ -58,3 +66,4 @@
     </div>    <!-- well -->
   </div>
 </div>
+

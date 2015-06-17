@@ -1,6 +1,12 @@
 <h1>Users#show</h1>
+
 <p><%= @user.first_name %> <%= @user.last_name %></p>
 <p>Home city: <%= @user.home_city %></p>
 <p>Joined: <%= @user.created_at.strftime("%m/%d/%Y") %></p>
 <br>
 <%= link_to 'Edit profile', edit_user_path(@user) %>
+
+<%= image_tag @user.avatar.url %>
+<%= image_tag @user.avatar.url(:medium) %>
+<%= image_tag @user.avatar.url(:thumb) %>
+

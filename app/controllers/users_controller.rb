@@ -28,7 +28,7 @@ class UsersController < ApplicationController
   # POST /users
   #
   def create
-    @user = User.new user_params
+    @user = User.create user_params
     if @user.save
       login(@user)
       redirect_to user_path(@user)
@@ -52,7 +52,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :home_city, :email, :email_confirmation, :password, :password_confirmation)
+    params.require(:user).permit(:first_name, :last_name, :home_city, :email, :email_confirmation, :password, :password_confirmation, :avatar)
   end
 
 end
