@@ -1,12 +1,20 @@
 <h1>Users#show</h1>
 
-<p><%= @user.first_name %> <%= @user.last_name %></p>
-<p>Home city: <%= @user.home_city %></p>
-<p>Joined: <%= @user.created_at.strftime("%m/%d/%Y") %></p>
+<p><b>Name:</b> <%= @user.first_name %> <%= @user.last_name %></p>
+<p><b>Home city:</b> <%= @user.home_city %></p>
+<p><b>Joined:</b> <%= @user.created_at.strftime("%m/%d/%Y") %></p>
 <br>
-<%= link_to 'Edit profile', edit_user_path(@user) %>
-
 <%= image_tag @user.avatar.url %>
-<%= image_tag @user.avatar.url(:medium) %>
-<%= image_tag @user.avatar.url(:thumb) %>
+<%#= image_tag @user.avatar.url(:medium) %>
+<%#= image_tag @user.avatar.url(:thumb) %>
+<br>
+<p>
+<%= link_to 'Edit profile', edit_user_path(@user) %>
+</p>
 
+<h2>My travel logs:</h2>
+<ul>
+<% @user.logs.each do |log| %>
+  <li><%= link_to "#{log.title}", user_log_path(@user, log) %></li>
+<% end %>
+</ul>
