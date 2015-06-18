@@ -28,6 +28,8 @@ class LogsController < ApplicationController
   end
 
   def edit
+    @user = User.find params[:user_id]
+    @log = Log.find params[:id]
   end
 
   #
@@ -44,22 +46,40 @@ class LogsController < ApplicationController
     end
   end
 
+  #
+  # PUT users/:user_id/logs/:id
+  #
   def update
-    if @log.update(log_params)
-      redirect_to
+    user = User.find params[:user_id]
+    @log = Log.find params[:id]
+    if @log.update_attributes log_params
+      redirect_to user_log_path(user, @log)
     else
+      flash.now[:alert] = "There was a problem with your update"
       render :edit
     end
   end
+
+  #
+  # DELETE users/:user_id/logs/id
+  #
+  def destroy
+    log = Log.find params[:id]
+    log.destroy
+    redirect_to user_path(params[:user_id])
+  end
+
+  private
+
+  # removed :image for now
+  def log_params
+    params.require(:log).permit(:title, :content, :location, :city_id, :user_id)
+  end
+
+  def find_log
+    @log = Log.find(params[:id])
+  end
+
 end
 
-private
 
-# removed :image for now
-def log_params
-  params.require(:log).permit(:title, :content, :location, :city_id, :user_id)
-end
-
-def find_log
-  @log = Log.find(params[:id])
-end

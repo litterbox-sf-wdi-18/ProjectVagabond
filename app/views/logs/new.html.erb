@@ -10,7 +10,7 @@
     <%= f.text_area :content, size: "60x12" %>
     <%= f.hidden_field :city_id, value: @city.id %>
     <%= f.hidden_field :user_id, value: @user.id %>
-    <%= f.submit "Post" %>
+    <%= f.submit "Post", class: 'btn btn-primary' %>
   <% end %>
 
 <% else %> <!-- current_city -->
@@ -25,7 +25,7 @@
     <%= f.text_area :content, size: "60x12" %>
     <%= f.hidden_field :city_id, value: current_city.id %>
     <%= f.hidden_field :user_id, value: @user.id %>
-    <%= f.submit "Post" %>
+    <%= f.submit "Post", class: 'btn btn-primary' %>
   <% end %>
 
 <% end %>
