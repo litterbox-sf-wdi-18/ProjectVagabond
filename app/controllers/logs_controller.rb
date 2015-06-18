@@ -4,6 +4,7 @@ class LogsController < ApplicationController
   end
 
   def new
+    binding.pry
     @log = Log.new
   end
 
