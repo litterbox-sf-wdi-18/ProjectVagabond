@@ -3,7 +3,9 @@
 <br>
 <p><%= @log.content %></p>
 <br>
-<%= link_to "Back to #{@back}", @back_path %>
+<% if @back %>
+  <%= link_to "Back to #{@back}", @back_path %>
+<% end %>
 
 <%#= image_tag @user.avatar.url %>
 

@@ -5,7 +5,7 @@ module CitiesHelper
   end
 
   def current_city
-    current_user.current_city
+    @current_city = City.find_by(name:current_user.current_city)
   end
 
 end

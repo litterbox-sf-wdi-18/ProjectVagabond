@@ -3,23 +3,14 @@ class LogsController < ApplicationController
   def index
   end
 
+  #
+  # GET /users/:user_id/logs/new
+  #
   def new
-    binding.pry
+    @user = User.find params[:user_id]
+    # @city will be nil in the event user posts to his/her current_city
+    @city = City.find_by_id params[:city]
     @log = Log.new
-  end
-
-  #
-  # POST /users/:user_id/logs
-  #
-  def create
-    @log = Log.new(log_params)
-    @log.user = current_user
-    if @log.save #if log is successfully saved...
-      redirect_to @log #redirect to that log...
-    else
-      flash[:error] = @log.errors.full_messages.to_sentence
-      render :new #else, render form again
-    end
   end
 
   #
@@ -39,9 +30,23 @@ class LogsController < ApplicationController
   def edit
   end
 
+  #
+  # POST /users/:user_id/logs
+  #
+  def create
+    user = User.find params[:user_id]
+    @log = Log.create log_params
+    if @log.save
+      redirect_to user_log_path(user, @log)
+    else
+      flash.now[:alert] = "There was a problem with your post"
+      render :edit
+    end
+  end
+
   def update
     if @log.update(log_params)
-      redirect_to @log
+      redirect_to
     else
       render :edit
     end
@@ -50,8 +55,9 @@ end
 
 private
 
+# removed :image for now
 def log_params
-  params.require(:log).permit(:title, :content, :location, :image)
+  params.require(:log).permit(:title, :content, :location, :city_id, :user_id)
 end
 
 def find_log
