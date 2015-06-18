@@ -7,6 +7,9 @@ class LogsController < ApplicationController
     @log = Log.new
   end
 
+  #
+  # POST /users/:user_id/logs
+  #
   def create
     @log = Log.new(log_params)
     @log.user = current_user
@@ -23,6 +26,13 @@ class LogsController < ApplicationController
   #
   def show
     @log = Log.find(params[:id])
+    if params[:city] # navigating from cities#show page
+      @back = @log.city.name
+      @back_path = city_path(@log.city)
+    elsif params[:user] # navigating from users#show page
+      @back = @log.user.first_name + " " + @log.user.last_name
+      @back_path = user_path(@log.user)
+    end
   end
 
   def edit

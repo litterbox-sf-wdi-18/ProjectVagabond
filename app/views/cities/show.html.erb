@@ -3,7 +3,7 @@
 <ul>
 
   <% @logs.each do |log| %>
-    <li><%= link_to "#{log.title}", user_log_path(log.user, log) %>
+    <li><%= link_to "#{log.title}", user_log_path(log.user, log, city:"true") %>
         <%= "by #{log.user.first_name} #{log.user.last_name} - " %>
         <%= "posted #{log.created_at.strftime("%m/%d/%Y")}" %></li>
   <% end %>
